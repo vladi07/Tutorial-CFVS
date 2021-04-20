@@ -146,17 +146,22 @@ class Persona
         return $this;
     }
 
-    public function getDocumentoIdentidad(): ?Integer
+    /**
+     * @return mixed
+     */
+    public function getDocumentoIdentidad()
     {
         return $this->documentoIdentidad;
     }
 
-    public function setDocumentoIdentidad(?Integer $documentoIdentidad): self
+    /**
+     * @param mixed $documentoIdentidad
+     */
+    public function setDocumentoIdentidad($documentoIdentidad): void
     {
         $this->documentoIdentidad = $documentoIdentidad;
-
-        return $this;
     }
+
 
     public function getExpedido(): ?string
     {
