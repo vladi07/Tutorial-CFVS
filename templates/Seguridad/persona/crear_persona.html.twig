@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crear Persona</title>
+</head>
+<body>
+    <!-- En esta parte de la pantalla se mostraran los mensajes marcados en PersonaController -->
+    <div>
+        <!-- usamos FOR, LABEL el nombre de la llave, MESSAGES el nombre del valor en el arreglo y APP.FLASHES me devuelve los mensajes que tengo  -->
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                {{ label }} {{ message }}
+            {% endfor %}
+        {% endfor %}
+    </div>
+    <h1>Bienvenido al Módulo de Administracion de Personas</h1>
+    <p>Por favor registre los datos de la persona</p>
+
+    <form method="post" action="" >
+        <div>
+            <label for="nombre">Ingrese el nombre: </label>
+            <!-- 'name' es llave en 'PersonaContrroller' -->
+            <input type="text" name="nombres" id="nombres">
+        </div>
+        <div>
+            <label for="nombre">Ingrese Primer Apellido: </label>
+            <input type="text" name="primerApellido" id="primerApellido">
+        </div>
+        <div>
+            <label for="nombre">Ingrese Segundo Apellido: </label>
+            <input type="text" name="segundoApellido" id="segundoApellido">
+        </div>
+        <div>
+            <label for="nombre">Documento de Identidad : </label>
+            <input type="number" name="documentoIdentidad" id="documentoIdentidad">
+        </div>
+        <div>
+            <label for="nombre">Expedido: </label>
+            <input type="text" name="expedido" id="expedido">
+        </div>
+        <div>
+            <label for="nombre">Fecha de Nacimiento: </label>
+            <input type="date" name="fechaNacimiento" id="fechaNacimiento">
+        </div>
+        <div>
+            <label for="nombre">Género: </label>
+            <input type="text" name="genero" id="genero">
+        </div>
+        <div>
+            <label for="nombre">Correo: </label>
+            <input type="text" name="correo" id="correo">
+        </div>
+        <div>
+            <label for="nombre">Teléfono: </label>
+            <input type="number" name="telefono" id="telefono">
+        </div>
+        <div>
+            <label for="nombre">Grado Academico: </label>
+            <input type="text" name="gradoAcademico" id="gradoAcademico">
+        </div>
+        <div>
+            <label for="nombre">Domicilio: </label>
+            <input type="text" name="domicilio" id="domicilio">
+        </div>
+        <div>
+            <label for="nombre">Departamento: </label>
+            <input type="text" name="departamento" id="departamento">
+        </div>
+        <div>
+            <label for="nombre">Centro de Conciliación: </label>
+            <input type="text" name="centro" id="centro">
+        </div>
+        <input type="submit" value="Guardar" />
+    </form>
+
+</body>
+</html>
