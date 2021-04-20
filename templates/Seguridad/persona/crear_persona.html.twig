@@ -20,7 +20,26 @@
     <h1>Bienvenido al Módulo de Administracion de Personas</h1>
     <p>Por favor registre los datos de la persona</p>
 
-    {{ form(personaForm) }}
+    {{ form_start(personaForm) }}
+        {{ form_label(personaForm.nombres) }}
+        {{ form_errors(personaForm.nombres) }}
+        {{ form_widget(personaForm.nombres) }}
+
+        {{ form_row(personaForm.nombres) }}
+        {{ form_row(personaForm.primerApellido) }}
+        {{ form_row(personaForm.segundoApellido) }}
+        {{ form_row(personaForm.documentoIdentidad) }}
+        {{ form_row(personaForm.expedido) }}
+        {{ form_row(personaForm.fechaNacimiento) }}
+        {{ form_row(personaForm.genero) }}
+        {{ form_row(personaForm.correo) }}
+        {{ form_row(personaForm.telefono) }}
+        {{ form_row(personaForm.gradoAcademico) }}
+        {{ form_row(personaForm.domicilio) }}
+        {{ form_row(personaForm.departamento) }}
+        {{ form_row(personaForm.centro) }}
+        {{ form_row(personaForm.enviar) }}
+    {{ form_end(personaForm) }}
 
 </body>
 </html>

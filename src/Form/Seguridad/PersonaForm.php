@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
 use function Sodium\add;
 
 class PersonaForm extends AbstractType
@@ -21,7 +22,17 @@ class PersonaForm extends AbstractType
     {
         $builder
             ->add('nombres', TextType::class)
-            ->add('primerApellido', TextType::class)
+            ->add('primerApellido', TextType::class, [
+                'required' => true,
+                'constraints' => [
+                    new Length([
+                        'min' => 5,
+                        'max' => 200,
+                        'minMessage' => 'Apellido muy corto',
+                        'maxMessage' => 'Apellido muy largo'
+                    ])
+                ]
+            ])
             ->add('segundoApellido')
             ->add('documentoIdentidad')
             ->add('expedido', TextType::class)

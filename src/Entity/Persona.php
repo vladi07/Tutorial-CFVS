@@ -3,8 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PersonaRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
-use phpDocumentor\Reflection\Types\Integer;
 
 /**
  * @ORM\Entity(repositoryClass=PersonaRepository::class)
@@ -24,9 +24,18 @@ class Persona
     /**
      * @ORM\Column(
      *     type="string",
-     *     length=150,
+     *     length=200,
      *     nullable=false
-     *)
+     * )
+     * @Assert\NotBlank(
+     *     message="Por favor no deje el campo vacio"
+     * )
+     * @Assert\Length(
+     *     min="3",
+     *     max="250",
+     *     minMessage="Por favor ingrese al menos 3 caracteres",
+     *     maxMessage="Por favor ingrese un nombre de no mas de 250 caracteres"
+     * )
      */
     private $nombres;
 
