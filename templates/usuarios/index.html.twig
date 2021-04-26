@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuarios index{% endblock %}
+
+{% block body %}
+    <h1>Lista de Usuarios</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Usuario</th>
+                <th>Clave</th>
+                <th>Tipo</th>
+                <th>IdPersona</th>
+                <th>IdRoles</th>
+                <th>IdCentro</th>
+                <th>Estado</th>
+                <th>CreadoPor</th>
+                <th>FechaCreacion</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.id }}</td>
+                <td>{{ usuario.usuario }}</td>
+                <td>{{ usuario.clave }}</td>
+                <td>{{ usuario.tipo }}</td>
+                <td>{{ usuario.idPersona }}</td>
+                <td>{{ usuario.idRoles }}</td>
+                <td>{{ usuario.idCentro }}</td>
+                <td>{{ usuario.estado ? 'Yes' : 'No' }}</td>
+                <td>{{ usuario.creadoPor }}</td>
+                <td>{{ usuario.fechaCreacion ? usuario.fechaCreacion|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('usuarios_show', {'id': usuario.id}) }}">Ver</a>
+                    <a href="{{ path('usuarios_edit', {'id': usuario.id}) }}">Editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">No se encontraron registros</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('usuarios_new') }}">Crear Nuevo</a>
+{% endblock %}

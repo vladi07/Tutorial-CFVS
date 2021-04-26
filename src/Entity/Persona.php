@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PersonaRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -113,6 +115,19 @@ class Persona
      * @ORM\Column(type="string", length=150)
      */
     private $centro;
+
+    /**
+     * @ORM\OneToMany(
+     *     targetEntity=Usuarios::class,
+     *     mappedBy="persona"
+     * )
+     */
+    private $usuarios;
+
+    public function __construct()
+    {
+        $this->usuarios = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -276,6 +291,36 @@ class Persona
     public function setCentro(string $centro): self
     {
         $this->centro = $centro;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Usuarios[]
+     */
+    public function getUsuarios(): Collection
+    {
+        return $this->usuarios;
+    }
+
+    public function addUsuario(Usuarios $usuario): self
+    {
+        if (!$this->usuarios->contains($usuario)) {
+            $this->usuarios[] = $usuario;
+            $usuario->setPersona($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUsuario(Usuarios $usuario): self
+    {
+        if ($this->usuarios->removeElement($usuario)) {
+            // set the owning side to null (unless already changed)
+            if ($usuario->getPersona() === $this) {
+                $usuario->setPersona(null);
+            }
+        }
 
         return $this;
     }

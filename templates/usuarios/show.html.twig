@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuarios{% endblock %}
+
+{% block body %}
+    <h1>Usuarios</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ usuario.id }}</td>
+            </tr>
+            <tr>
+                <th>Usuario</th>
+                <td>{{ usuario.usuario }}</td>
+            </tr>
+            <tr>
+                <th>Clave</th>
+                <td>{{ usuario.clave }}</td>
+            </tr>
+            <tr>
+                <th>Tipo</th>
+                <td>{{ usuario.tipo }}</td>
+            </tr>
+            <tr>
+                <th>Datos de Persona</th>
+                <td>{{ usuario.idPersona }}</td>
+            </tr>
+            <tr>
+                <th>Roles del Usuario</th>
+                <td>{{ usuario.idRoles }}</td>
+            </tr>
+            <tr>
+                <th>Centro de Conciliación</th>
+                <td>{{ usuario.idCentro }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ usuario.estado ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Creado Por</th>
+                <td>{{ usuario.creadoPor }}</td>
+            </tr>
+            <tr>
+                <th>Fecha de Creacion</th>
+                <td>{{ usuario.fechaCreacion ? usuario.fechaCreacion|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('usuarios_index') }}">Volver a lista</a>
+
+    <a href="{{ path('usuarios_edit', {'id': usuario.id}) }}">Editar</a>
+
+    {{ include('usuarios/_delete_form.html.twig') }}
+{% endblock %}

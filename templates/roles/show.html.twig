@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Roles{% endblock %}
+
+{% block body %}
+    <h1>Roles</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ role.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ role.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ role.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ role.activo ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Fecha de Creacion</th>
+                <td>{{ role.fechaCreacion ? role.fechaCreacion|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Usuario Creador</th>
+                <td>{{ role.usuarioCreador }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('roles_index') }}">Volver a lista anterior</a>
+
+    <a href="{{ path('roles_edit', {'id': role.id}) }}">Editar</a>
+
+    {{ include('roles/_delete_form.html.twig') }}
+{% endblock %}

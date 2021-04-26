@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Persona{% endblock %}
+
+{% block body %}
+    <h1>Persona</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ persona.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombres</th>
+                <td>{{ persona.nombres }}</td>
+            </tr>
+            <tr>
+                <th>Primer Apellido</th>
+                <td>{{ persona.primerApellido }}</td>
+            </tr>
+            <tr>
+                <th>Segundo Apellido</th>
+                <td>{{ persona.segundoApellido }}</td>
+            </tr>
+            <tr>
+                <th>Documento de Identidad</th>
+                <td>{{ persona.documentoIdentidad }}</td>
+            </tr>
+            <tr>
+                <th>Expedido</th>
+                <td>{{ persona.expedido }}</td>
+            </tr>
+            <tr>
+                <th>Fecha de Nacimiento</th>
+                <td>{{ persona.fechaNacimiento ? persona.fechaNacimiento|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Genero</th>
+                <td>{{ persona.genero }}</td>
+            </tr>
+            <tr>
+                <th>Correo</th>
+                <td>{{ persona.correo }}</td>
+            </tr>
+            <tr>
+                <th>Telefono</th>
+                <td>{{ persona.telefono }}</td>
+            </tr>
+            <tr>
+                <th>Grado Academico</th>
+                <td>{{ persona.gradoAcademico }}</td>
+            </tr>
+            <tr>
+                <th>Domicilio</th>
+                <td>{{ persona.domicilio }}</td>
+            </tr>
+            <tr>
+                <th>Departamento</th>
+                <td>{{ persona.departamento }}</td>
+            </tr>
+            <tr>
+                <th>Centro de Conciliación</th>
+                <td>{{ persona.centro }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('persona_index') }}">Volver a lista</a>
+
+    <a href="{{ path('persona_edit', {'id': persona.id}) }}">Editar</a>
+
+    {{ include('persona/_delete_form.html.twig') }}
+{% endblock %}

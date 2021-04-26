@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Roles de Usuarios{% endblock %}
+
+{% block body %}
+    <h1>Lista de Roles</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Activo</th>
+                <th>Fecha de Creacion</th>
+                <th>Usuario Creador</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for role in roles %}
+            <tr>
+                <td>{{ role.id }}</td>
+                <td>{{ role.nombre }}</td>
+                <td>{{ role.descripcion }}</td>
+                <td>{{ role.activo ? 'Yes' : 'No' }}</td>
+                <td>{{ role.fechaCreacion ? role.fechaCreacion|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ role.usuarioCreador }}</td>
+                <td>
+                    <a href="{{ path('roles_show', {'id': role.id}) }}">Ver</a>
+                    <a href="{{ path('roles_edit', {'id': role.id}) }}">Editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">No se encontraron registros</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('roles_new') }}">CREAR NUEVO ROL</a>
+{% endblock %}

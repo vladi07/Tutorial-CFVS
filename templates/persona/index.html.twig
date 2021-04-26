@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista Personas{% endblock %}
+
+{% block body %}
+    <h1>Personas</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombres</th>
+                <th>Primer Apellido</th>
+                <th>Segundo Apellido</th>
+                <th>Documento Identidad</th>
+                <th>Expedido</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Género</th>
+                <th>Correo</th>
+                <th>Teléfono</th>
+                <th>Grado Academico</th>
+                <th>Domicilio</th>
+                <th>Departamento</th>
+                <th>Centro de Conciliación</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for persona in personas %}
+            <tr>
+                <td>{{ persona.id }}</td>
+                <td>{{ persona.nombres }}</td>
+                <td>{{ persona.primerApellido }}</td>
+                <td>{{ persona.segundoApellido }}</td>
+                <td>{{ persona.documentoIdentidad }}</td>
+                <td>{{ persona.expedido }}</td>
+                <td>{{ persona.fechaNacimiento ? persona.fechaNacimiento|date('Y-m-d') : '' }}</td>
+                <td>{{ persona.genero }}</td>
+                <td>{{ persona.correo }}</td>
+                <td>{{ persona.telefono }}</td>
+                <td>{{ persona.gradoAcademico }}</td>
+                <td>{{ persona.domicilio }}</td>
+                <td>{{ persona.departamento }}</td>
+                <td>{{ persona.centro }}</td>
+                <td>
+                    <a href="{{ path('persona_show', {'id': persona.id}) }}">Ver</a>
+                    <a href="{{ path('persona_edit', {'id': persona.id}) }}">Editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">No se encontraron registros</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('persona_new') }}">Crear Nuevo</a>
+{% endblock %}
